@@ -1,0 +1,6 @@
+git add -A
+git commit -m "随便写"
+
+如果git push不能连接服务，那就检查代理端口，然后用以下命令修改端口
+git config --global https.proxy 127.0.0.1:*****
+git config --global http.proxy 127.0.0.1:*****
