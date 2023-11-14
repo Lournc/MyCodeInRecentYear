@@ -38,8 +38,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "d:/MyC++Code/2023/10",
-      "program": "d:/MyC++Code/2023/10/build/Debug/outDebug",
+      "cwd": "d:/MyC++Code/2023/11",
+      "program": "d:/MyC++Code/2023/11/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "C:/msys64/mingw64/bin/gdb.exe",
       "setupCommands": [
