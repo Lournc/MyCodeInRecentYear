@@ -33,7 +33,7 @@ void quicksort(T *begin, T *end)
 
 int main()
 {
-    int a[]{5, 4, 9, 32, 12, 3, 20, 14, 54, 77, 3, 6, 5};
+    int a[]{11,5,8,30,15,45,22,11,44,33,84,12,23};
     quicksort(&a[0], &a[12]);
     for (int v : a)
     {
