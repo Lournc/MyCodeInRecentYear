@@ -2,44 +2,55 @@
 
 #include <iostream>
 
-namespace koarz{
+namespace koarz {
 
-template <typename T>
-class unique_ptr;
+template <typename T> class unique_ptr;
 
 } // namespace koarz
 
-template <typename T>
-class koarz::unique_ptr {
+template <typename T> class koarz::unique_ptr {
 private:
-    T* ptr_;
+  T *ptr_;
+
 public:
-    unique_ptr() : ptr_(nullptr){};
-    unique_ptr(T* ptr) : ptr_(ptr){};
-    unique_ptr(koarz::unique_ptr<T>&) = delete;
-    unique_ptr& operator=(koarz::unique_ptr<T>&) = delete;
-    unique_ptr(koarz::unique_ptr<T>&&) noexcept;
-    unique_ptr& operator=(koarz::unique_ptr<T>&&) noexcept;
-    T* operator->() const { return ptr_; }
-    T& operator*() const { return *ptr_; }
-    T* get() const { return ptr_; }
-    T* release() { T* tmp = ptr_; ptr_ = nullptr; return tmp; }
-    void reset(T *ptr = nullptr) { delete ptr_; ptr_ = ptr; }
-    void swap(koarz::unique_ptr<T>&);
-    ~unique_ptr() { delete ptr_; }
+  unique_ptr() : ptr_(nullptr){};
+  unique_ptr(T *ptr) : ptr_(ptr){};
+  unique_ptr(koarz::unique_ptr<T> &) = delete;
+  unique_ptr &operator=(koarz::unique_ptr<T> &) = delete;
+  unique_ptr(koarz::unique_ptr<T> &&) noexcept;
+  unique_ptr &operator=(koarz::unique_ptr<T> &&) noexcept;
+  T *operator->() const { return ptr_; }
+  T &operator*() const { return *ptr_; }
+  T *get() const { return ptr_; }
+  T *release() {
+    T *tmp = ptr_;
+    ptr_ = nullptr;
+    return tmp;
+  }
+  void reset(T *ptr = nullptr) {
+    if (ptr_ != ptr) {
+      delete ptr_;
+    }
+    ptr_ = ptr;
+  }
+  void swap(koarz::unique_ptr<T> &);
+  ~unique_ptr() { delete ptr_; }
 };
 
 template <typename T>
-koarz::unique_ptr<T>::unique_ptr(koarz::unique_ptr<T>&& other) noexcept {
-    delete ptr_;
-    ptr_ = other.ptr_;
-    other.ptr_ = nullptr;
+koarz::unique_ptr<T>::unique_ptr(koarz::unique_ptr<T> &&other) noexcept {
+  delete ptr_;
+  ptr_ = other.ptr_;
+  other.ptr_ = nullptr;
 }
 
 template <typename T>
-koarz::unique_ptr<T>& koarz::unique_ptr<T>::operator=(koarz::unique_ptr<T>&& other) noexcept {
+koarz::unique_ptr<T> &
+koarz::unique_ptr<T>::operator=(koarz::unique_ptr<T> &&other) noexcept {
+  if (ptr_ != other.ptr_) {
     delete ptr_;
-    ptr_ = other.ptr_;
-    other.ptr_ = nullptr;
-    return *this;
+  }
+  ptr_ = other.ptr_;
+  other.ptr_ = nullptr;
+  return *this;
 }
