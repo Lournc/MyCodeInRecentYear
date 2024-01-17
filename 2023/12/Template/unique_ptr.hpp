@@ -1,7 +1,5 @@
 #pragma once
 
-#include <iostream>
-
 namespace koarz {
 
 template <typename T> class unique_ptr;
@@ -39,7 +37,6 @@ public:
 
 template <typename T>
 koarz::unique_ptr<T>::unique_ptr(koarz::unique_ptr<T> &&other) noexcept {
-  delete ptr_;
   ptr_ = other.ptr_;
   other.ptr_ = nullptr;
 }
