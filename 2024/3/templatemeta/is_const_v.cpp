@@ -6,5 +6,9 @@ int main() {
   std::cout
       << is_const_v<
              const int
+                 *> << is_const_v<const int[1]> << is_const_v<const int **> << is_const_v<const int(*)[1]> << is_const_v<const int *[1]> << is_const_v<const int[1][1]> << std::endl;
+  std::cout
+      << std::is_const_v<
+             const int
                  *> << is_const_v<const int[1]> << is_const_v<const int **> << is_const_v<const int(*)[1]> << is_const_v<const int *[1]> << is_const_v<const int[1][1]>;
 }
