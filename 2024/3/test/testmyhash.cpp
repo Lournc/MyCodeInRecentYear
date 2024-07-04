@@ -1,7 +1,7 @@
 #include <cstdint>
 #include <iostream>
 #include <random>
-const int BUCKET = 15;
+const int BUCKET = 25;
 uint hash(uint dev, uint blockno) {
   uint a, b, c, d;
   a = (dev | blockno) >> 24;
