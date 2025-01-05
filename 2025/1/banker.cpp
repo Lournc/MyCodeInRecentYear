@@ -104,7 +104,7 @@ public:
 
   void UpdateResourceForProcess() {
     std::string name;
-    std::cout << "输入要添加资源的进程名：\n";
+    std::cout << "输入要更新资源的进程名：\n";
     std::cin >> name;
     if (max.find(name) == max.end()) {
       std::cout << "该进程不存在\n";
